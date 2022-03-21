@@ -7,6 +7,8 @@ public class Card {
     //Private variables
     private int suit; //Club = 0, Spade = 1, Heart = 2, Diamond = 3.
     private int rank; //Ace = 1, Two = 2, ... , King = 13.
+    private String[] cardSuit = {"Clubs", "Spades", "Hearts", "Diamonds"};
+    private String[] cardRank = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
     private String cardIMG; //Filename for the card image.
     
     //Constructor
@@ -36,13 +38,13 @@ public class Card {
     }
     
     //Returns the value of the suit of the card.
-    public int getSuit(){
-        return suit;
+    public String getSuit(){
+        return cardSuit[suit];
     }
     
     //Returns the value of the rank of the card.
-    public int getRank(){
-        return rank;
+    public String getRank(){
+        return cardRank[rank];
     }
     
     //Returns the filename of the card image.
