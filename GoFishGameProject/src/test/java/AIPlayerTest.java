@@ -47,7 +47,7 @@ public class AIPlayerTest {
         String result = instance.randomAsk();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -61,7 +61,7 @@ public class AIPlayerTest {
         boolean result = instance.checkForPairs();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -75,7 +75,7 @@ public class AIPlayerTest {
         int[] result = instance.getPairIndexes();
         assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }
