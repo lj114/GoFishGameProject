@@ -21,7 +21,7 @@ public class PlayerTest {
     }
     
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass(){
     }
     
     @AfterClass
@@ -37,84 +37,24 @@ public class PlayerTest {
     }
 
     /**
-     * Test of setTurn method, of class Player.
-     */
-    @Test
-    public void testSetTurn() {
-        System.out.println("setTurn");
-        boolean t = false;
-        Player instance = new Player();
-        instance.setTurn(t);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of isTurn method, of class Player.
      */
     @Test
     public void testIsTurn() {
         System.out.println("isTurn");
-        Player instance = new Player();
-        boolean expResult = false;
-        boolean result = instance.isTurn();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        Player p = new Player();
+        assertEquals(false, p.isTurn());    //Default is set to false.
     }
-
+    
     /**
-     * Test of handSize method, of class Player.
+     * Test of setTurn method, of class Player.
      */
     @Test
-    public void testHandSize() {
-        System.out.println("handSize");
-        Player instance = new Player();
-        int expResult = 0;
-        int result = instance.handSize();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addCardtoHand method, of class Player.
-     */
-    @Test
-    public void testAddCardtoHand() {
-        System.out.println("addCardtoHand");
-        Card c = null;
-        Player instance = new Player();
-        instance.addCardtoHand(c);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of removeCardfromHand method, of class Player.
-     */
-    @Test
-    public void testRemoveCardfromHand() {
-        System.out.println("removeCardfromHand");
-        Card c = null;
-        Player instance = new Player();
-        Card expResult = null;
-        Card result = instance.removeCardfromHand(c);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addPair method, of class Player.
-     */
-    @Test
-    public void testAddPair() {
-        System.out.println("addPair");
-        Player instance = new Player();
-        instance.addPair();
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+    public void testSetTurn() {
+        System.out.println("setTurn");
+        Player p = new Player();
+        p.setTurn(true);
+        assertEquals(true, p.isTurn());     //Check if turn is true after setting it to true.
     }
 
     /**
@@ -123,12 +63,67 @@ public class PlayerTest {
     @Test
     public void testGetPairs() {
         System.out.println("getPairs");
-        Player instance = new Player();
-        int expResult = 0;
-        int result = instance.getPairs();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        Player p = new Player();
+        assertEquals(0, p.getPairs());      //Player has 0 pairs by default.
     }
     
+    /**
+     * Test of addPair method, of class Player.
+     */
+    @Test
+    public void testAddPair() {
+        System.out.println("addPair");
+        Player p = new Player();
+        p.addPair();
+        assertEquals(1, p.getPairs());      //Check if player has 1 pair after using addPair() once.
+    }
+    
+    /**
+     * Test of handSize method, of class Player.
+     */
+    @Test
+    public void testHandSize() {
+        System.out.println("handSize");
+        Player p = new Player();
+        assertEquals(0, p.handSize());      //Player has 0 cards by default.
+    }
+
+    /**
+     * Test of addCardtoHand method, of class Player.
+     */
+    @Test
+    public void testAddCardtoHand() {
+        System.out.println("addCardtoHand");
+        Card c = new Card(0, 0);
+        Player p = new Player();
+        p.addCardtoHand(c);
+        assertEquals(1, p.handSize());      //Check if hand size increased by 1 after addCardtoHand().
+    }
+
+    /**
+     * Test of removeCardfromHand method, of class Player.
+     */
+    @Test
+    public void testRemoveCardfromHand() {
+        System.out.println("removeCardfromHand");
+        Card c = new Card(0, 0);
+        Player p = new Player();
+        p.addCardtoHand(c);
+        Card result = p.removeCardfromHand(c);
+        assertEquals(c, result);            //Check if the card added is the same as the card removed.
+    }
+    
+    /**
+     * Test of removeCardfromHand method, of class Player.
+     */
+    @Test
+    public void testRemoveCardfromHand2(){
+        System.out.println("removeCardfromHand2");
+        Card c = new Card(0, 1);
+        Card a = new Card(2, 0);
+        Player p = new Player();
+        p.addCardtoHand(c);
+        Card result = p.removeCardfromHand(a);
+        assertEquals(null, result);         //Check that the result of removing a card that isn't in the player's hand is null.
+    } 
 }

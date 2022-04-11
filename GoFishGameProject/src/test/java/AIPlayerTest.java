@@ -17,6 +17,8 @@ import static org.junit.Assert.*;
  */
 public class AIPlayerTest {
     
+    AIPlayer p;
+    
     public AIPlayerTest() {
     }
     
@@ -30,6 +32,11 @@ public class AIPlayerTest {
     
     @Before
     public void setUp() {
+        p = new AIPlayer();
+        for(int i = 0; i < 4; i++){
+            Card c = new Card(i, 0);        //All Cards are rank 2 of each suit.
+            p.addCardtoHand(c);
+        }
     }
     
     @After
@@ -42,12 +49,7 @@ public class AIPlayerTest {
     @Test
     public void testRandomAsk() {
         System.out.println("randomAsk");
-        AIPlayer instance = new AIPlayer();
-        String expResult = "";
-        String result = instance.randomAsk();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        assertEquals("2", p.randomAsk());       //Check if the rank found is 2.
     }
 
     /**
@@ -56,12 +58,7 @@ public class AIPlayerTest {
     @Test
     public void testCheckForPairs() {
         System.out.println("checkForPairs");
-        AIPlayer instance = new AIPlayer();
-        boolean expResult = false;
-        boolean result = instance.checkForPairs();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        assertEquals(true, p.checkForPairs()); //Since every card is rank 2, we expect checkForPairs() to be true.
     }
 
     /**
@@ -70,12 +67,9 @@ public class AIPlayerTest {
     @Test
     public void testGetPairIndexes() {
         System.out.println("getPairIndexes");
-        AIPlayer instance = new AIPlayer();
-        int[] expResult = null;
-        int[] result = instance.getPairIndexes();
+        int[] expResult = {0, 1};
+        int[] result = p.getPairIndexes();
         assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
     
 }
